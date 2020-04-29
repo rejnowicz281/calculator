@@ -3,3 +3,17 @@ body{
   height: 100vh;
   background-color: hsl(0, 0%, 17%);
 }
+#calculator{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 440px;
+  height: 505px;
+  margin-left: -220px;
+  margin-top: -260px;
+  background-color: hsl(0, 0%, 30%);
+  color: hsl(0, 0%, 70%);
+  border: 2px solid hsl(0, 0%, 60%);
+  border-radius: 25px;
+  padding: 15px;
+}
