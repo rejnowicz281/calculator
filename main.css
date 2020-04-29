@@ -17,3 +17,13 @@ body{
   border-radius: 25px;
   padding: 15px;
 }
+#screen-section{
+  display:flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  height: 30%;
+  border-bottom: 2px solid hsl(0, 0%, 40%);
+  font-size: 2.5em;
+  pointer-events: none;
+}
