@@ -48,4 +48,5 @@ table {
 }
 button{
   border: inherit;
+  background-color: inherit;
 }
