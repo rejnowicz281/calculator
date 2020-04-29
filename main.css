@@ -27,3 +27,19 @@ body{
   font-size: 2.5em;
   pointer-events: none;
 }
+#buttons-section{
+  display:grid;
+  grid-template-columns: repeat(4, 25%);
+  grid-template-rows: repeat(5, 20%);
+  height: 70%;
+}
+#buttons-section button{  
+  background-color: hsl(0, 0%, 30%);
+  color: hsl(0, 0%, 80%);
+  font-size: 1.1em;
+}
+#buttons-section button:hover{
+  cursor: pointer;
+  background-color: hsl(0, 0%, 32%);
+  border-radius: 5px;
+}
