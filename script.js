@@ -2,6 +2,7 @@ const screenSection = document.getElementById("screen-section");
 const numberButtons = document.querySelectorAll(".number");
 const equals = document.getElementById("equals");
 const allOperators = document.querySelectorAll(".operator");
+const clearButton = document.getElementById("clear");
 
 let operation = [];
 let sum = 0;
@@ -70,4 +71,12 @@ equals.addEventListener("click", function () {
 
   console.log(sum);
   console.log(operation);
+});
+
+clearButton.addEventListener("click", function () {
+  if (screenSection.textContent.length === 1) {
+    screenSection.textContent = "0";
+  } else {
+    screenSection.textContent = screenSection.textContent.slice(0, screenSection.textContent.length - 1);
+  }
 });
