@@ -71,6 +71,7 @@ equals.addEventListener("click", function () {
   operation = [];
 
   console.log(sum);
+  sum = 0;
   console.log(operation);
 });
 
