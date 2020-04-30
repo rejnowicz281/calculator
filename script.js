@@ -3,6 +3,7 @@ const numberButtons = document.querySelectorAll(".number");
 const equals = document.getElementById("equals");
 const allOperators = document.querySelectorAll(".operator");
 const clearButton = document.getElementById("clear");
+const allClearButton = document.getElementById("all-clear");
 
 let operation = [];
 let sum = 0;
@@ -79,4 +80,10 @@ clearButton.addEventListener("click", function () {
   } else {
     screenSection.textContent = screenSection.textContent.slice(0, screenSection.textContent.length - 1);
   }
+});
+
+allClearButton.addEventListener("click", function () {
+  screenSection.textContent = "0";
+  operation = [];
+  sum = 0;
 });
