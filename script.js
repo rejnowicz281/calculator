@@ -4,6 +4,7 @@ const equals = document.getElementById("equals");
 const allOperators = document.querySelectorAll(".operator");
 
 let operation = [];
+let sum = 0;
 
 function precedence() {
   for (let i = 1; i < operation.length; i += 2) { // every operator
@@ -56,3 +57,17 @@ for (operator of allOperators) {
     console.log(operation);
   });
 }
+
+equals.addEventListener("click", function () {
+  operation.push(+screenSection.textContent);
+  calcLogic();
+
+  for (let i = 0; i < operation.length; i += 2) {
+    sum += operation[i];
+  }
+  screenSection.textContent = sum;
+  operation = [];
+
+  console.log(sum);
+  console.log(operation);
+});
