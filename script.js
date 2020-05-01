@@ -50,9 +50,12 @@ for (btn of numberButtons) {
 
 for (operator of allOperators) {
   operator.addEventListener("click", function () {
-    operation.push(+screenSection.textContent);
+    if (screenSection.textContent === "") {
+      operation.splice(operation.length - 1, 1); // prevent pushing multiple operators beside each other
+    } else {
+      operation.push(+screenSection.textContent);
+    }
     calcLogic();
-
     screenSection.textContent = "";
     operation.push(this.textContent);
 
