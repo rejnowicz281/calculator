@@ -68,13 +68,17 @@ for (btn of numberButtons) {
 
 for (operator of allOperators) {
   operator.addEventListener("click", function () {
-    checkIfError();
+    if (screenSection.textContent === "ERROR") {
+      screenSection.textContent = "";
+      return;
+    }
 
     if (screenSection.textContent === "") {
       operation.splice(operation.length - 1, 1); // prevent pushing multiple operators beside each other
     } else {
       operation.push(+screenSection.textContent);
     }
+
     calcLogic();
     screenSection.textContent = "";
     operation.push(this.textContent);
@@ -118,4 +122,4 @@ allClearButton.addEventListener("click", function () {
   sum = 0;
 });
 
-// to do: divide by zero, keyboard support
+// to do: keyboard support
