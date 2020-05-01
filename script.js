@@ -38,7 +38,15 @@ function calcLogic() {
   precedence();
 }
 
+function checkIfError() {
+  if (screenSection.textContent === "ERROR") {
+    screenSection.textContent = "";
+  }
+}
+
 decimal.addEventListener("click", function () {
+  checkIfError();
+
   if (screenSection.textContent.includes(".")) {
     return;
   }
@@ -47,7 +55,9 @@ decimal.addEventListener("click", function () {
 
 for (btn of numberButtons) {
   btn.addEventListener("click", function () {
-    if (screenSection.textContent === "0" || screenSection.textContent === "00") { // on click, the starting 0 will dissapear
+    checkIfError();
+
+    if (screenSection.textContent === "0" || screenSection.textContent === "00") {
       screenSection.textContent = "";
     }
     screenSection.textContent += this.textContent;
@@ -58,6 +68,8 @@ for (btn of numberButtons) {
 
 for (operator of allOperators) {
   operator.addEventListener("click", function () {
+    checkIfError();
+
     if (screenSection.textContent === "") {
       operation.splice(operation.length - 1, 1); // prevent pushing multiple operators beside each other
     } else {
@@ -72,13 +84,19 @@ for (operator of allOperators) {
 }
 
 equals.addEventListener("click", function () {
+  checkIfError();
+
   operation.push(+screenSection.textContent);
   calcLogic();
 
   for (let i = 0; i < operation.length; i += 2) {
     sum += operation[i];
   }
-  screenSection.textContent = sum;
+  if (sum === Infinity || sum === -Infinity) {
+    screenSection.textContent = "ERROR";
+  } else {
+    screenSection.textContent = sum;
+  }
   operation = [];
 
   console.log(sum);
@@ -99,3 +117,5 @@ allClearButton.addEventListener("click", function () {
   operation = [];
   sum = 0;
 });
+
+// to do: divide by zero, keyboard support
