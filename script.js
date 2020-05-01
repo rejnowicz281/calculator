@@ -39,7 +39,7 @@ function calcLogic() {
 }
 
 function checkIfError() {
-  if (screenSection.textContent === "ERROR") {
+  if (screenSection.textContent === "ERROR" || screenSection.textContent === "NaN") {
     screenSection.textContent = "";
   }
 }
@@ -68,7 +68,7 @@ for (btn of numberButtons) {
 
 for (operator of allOperators) {
   operator.addEventListener("click", function () {
-    if (screenSection.textContent === "ERROR") {
+    if (screenSection.textContent === "ERROR" || screenSection.textContent === "NaN") {
       screenSection.textContent = "";
       return;
     }
