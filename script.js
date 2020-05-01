@@ -39,7 +39,7 @@ function calcLogic() {
 }
 
 function checkIfError() {
-  if (screenSection.textContent === "ERROR" || screenSection.textContent === "NaN") {
+  if (screenSection.textContent === "ERROR") {
     screenSection.textContent = "";
   }
 }
@@ -68,7 +68,7 @@ for (btn of numberButtons) {
 
 for (operator of allOperators) {
   operator.addEventListener("click", function () {
-    if (screenSection.textContent === "ERROR" || screenSection.textContent === "NaN") {
+    if (screenSection.textContent === "ERROR") {
       screenSection.textContent = "";
       return;
     }
@@ -100,6 +100,9 @@ equals.addEventListener("click", function () {
     screenSection.textContent = "ERROR";
   } else {
     screenSection.textContent = sum;
+  }
+  if (screenSection.textContent === "NaN") {
+    screenSection.textContent = "ERROR";
   }
   operation = [];
 
