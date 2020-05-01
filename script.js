@@ -91,6 +91,8 @@ equals.addEventListener("click", function () {
   checkIfError();
 
   operation.push(+screenSection.textContent);
+  console.log(operation);
+
   calcLogic();
 
   for (let i = 0; i < operation.length; i += 2) {
@@ -108,7 +110,6 @@ equals.addEventListener("click", function () {
 
   console.log(sum);
   sum = 0;
-  console.log(operation);
 });
 
 clearButton.addEventListener("click", function () {
@@ -125,4 +126,66 @@ allClearButton.addEventListener("click", function () {
   sum = 0;
 });
 
-// to do: keyboard support
+// keyboard support
+
+document.onkeyup = function (e) {
+  switch (e.which) {
+    case 48:
+      document.getElementById("0").click();
+      break;
+    case 49:
+      document.getElementById("1").click();
+      break;
+    case 50:
+      document.getElementById("2").click();
+      break;
+    case 51:
+      document.getElementById("3").click();
+      break;
+    case 52:
+      document.getElementById("4").click();
+      break;
+    case 53:
+      document.getElementById("5").click();
+      break;
+    case 54:
+      document.getElementById("6").click();
+      break;
+    case 55:
+      document.getElementById("7").click();
+      break;
+    case 56:
+      document.getElementById("8").click();
+      break;
+    case 57:
+      document.getElementById("9").click();
+      break;
+    case 8: // backspace
+      document.getElementById("clear").click();
+      break;
+    case 67: // C
+      document.getElementById("all-clear").click();
+      break;
+    case 13: // enter
+      document.getElementById("equals").click();
+      break;
+    case 190: // .
+      document.getElementById("decimal").click();
+      break;
+    case 88: // x
+      document.getElementById("multiply").click();
+      break;
+    case 191: // /
+      document.getElementById("divide").click();
+      break;
+    case 77: // m
+      document.getElementById("modulo").click();
+      break;
+    case 61: // +
+      document.getElementById("add").click();
+      break;
+    case 173: // -
+      document.getElementById("substract").click();
+      break;
+  }
+}
