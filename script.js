@@ -4,6 +4,7 @@ const equals = document.getElementById("equals");
 const allOperators = document.querySelectorAll(".operator");
 const clearButton = document.getElementById("clear");
 const allClearButton = document.getElementById("all-clear");
+const decimal = document.getElementById("decimal");
 
 let operation = [];
 let sum = 0;
@@ -36,6 +37,13 @@ function calcLogic() {
   minusBehaviour();
   precedence();
 }
+
+decimal.addEventListener("click", function () {
+  if (screenSection.textContent.includes(".")) {
+    return;
+  }
+  screenSection.textContent += this.textContent;
+});
 
 for (btn of numberButtons) {
   btn.addEventListener("click", function () {
