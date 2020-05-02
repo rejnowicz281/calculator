@@ -177,13 +177,14 @@ document.onkeyup = function (e) {
     case 13: // enter
       document.getElementById("equals").click();
       break;
+    case 188: // ,
     case 190: // .
       document.getElementById("decimal").click();
       break;
     case 88: // x
       document.getElementById("multiply").click();
       break;
-    case 191: // /
+    case 59: // :
       document.getElementById("divide").click();
       break;
     case 77: // m
