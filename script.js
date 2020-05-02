@@ -84,7 +84,7 @@ for (operator of allOperators) {
     }
 
     calcLogic();
-    screenSection.textContent = "";
+    screenSection.textContent = "0";
     operation.push(this.textContent);
 
     console.log(operation);
