@@ -136,7 +136,7 @@ allClearButton.addEventListener("click", function () {
 
 // keyboard support
 
-document.onkeyup = function (e) {
+document.onkeydown = function (e) {
   switch (e.which) {
     case 48:
       document.getElementById("0").click();
