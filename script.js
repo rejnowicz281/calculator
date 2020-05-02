@@ -9,6 +9,14 @@ const decimal = document.getElementById("decimal");
 let operation = [];
 let sum = 0;
 
+function minusBehaviour() {
+  for (let i = 0; i < operation.length; i += 2) { // every number
+    if (operation[i - 1] === "-") {
+      operation.splice([i] - 1, 2, "+", -operation[i]);
+    }
+  }
+}
+
 function precedence() {
   for (let i = 1; i < operation.length; i += 2) { // every operator
     switch (operation[i]) {
@@ -25,14 +33,6 @@ function precedence() {
   }
 }
 
-function minusBehaviour() {
-  for (let i = 0; i < operation.length; i += 2) { // every number
-    if (operation[i - 1] === "-") {
-      operation.splice([i] - 1, 2, "+", -operation[i]);
-    }
-  }
-}
-
 function calcLogic() {
   minusBehaviour();
   precedence();
@@ -40,22 +40,27 @@ function calcLogic() {
 
 function checkIfError() {
   if (screenSection.textContent === "ERROR") {
-    screenSection.textContent = "";
+    screenSection.textContent = "0";
+    return true;
   }
 }
 
 decimal.addEventListener("click", function () {
-  checkIfError();
+  if (checkIfError()) {
+    return;
+  }
 
   if (screenSection.textContent.includes(".")) {
     return;
   }
-  screenSection.textContent += this.textContent;
+  screenSection.textContent += ".";
 });
 
 for (btn of numberButtons) {
   btn.addEventListener("click", function () {
-    checkIfError();
+    if (checkIfError()) {
+      return;
+    }
 
     if (screenSection.textContent === "0" || screenSection.textContent === "00") {
       screenSection.textContent = "";
@@ -68,8 +73,7 @@ for (btn of numberButtons) {
 
 for (operator of allOperators) {
   operator.addEventListener("click", function () {
-    if (screenSection.textContent === "ERROR") {
-      screenSection.textContent = "";
+    if (checkIfError()) {
       return;
     }
 
@@ -88,7 +92,9 @@ for (operator of allOperators) {
 }
 
 equals.addEventListener("click", function () {
-  checkIfError();
+  if (checkIfError()) {
+    return;
+  }
 
   operation.push(+screenSection.textContent);
   console.log(operation);
@@ -98,14 +104,12 @@ equals.addEventListener("click", function () {
   for (let i = 0; i < operation.length; i += 2) {
     sum += operation[i];
   }
-  if (sum === Infinity || sum === -Infinity) {
-    screenSection.textContent = "ERROR";
-  } else {
-    screenSection.textContent = sum;
-  }
-  if (screenSection.textContent === "NaN") {
+  screenSection.textContent = sum;
+
+  if (screenSection.textContent === "Infinity" || screenSection.textContent === "-Infinity" || screenSection.textContent === "NaN") {
     screenSection.textContent = "ERROR";
   }
+
   operation = [];
 
   console.log(sum);
@@ -113,6 +117,10 @@ equals.addEventListener("click", function () {
 });
 
 clearButton.addEventListener("click", function () {
+  if (checkIfError()) {
+    return;
+  }
+
   if (screenSection.textContent.length === 1) {
     screenSection.textContent = "0";
   } else {
